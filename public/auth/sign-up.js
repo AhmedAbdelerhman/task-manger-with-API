@@ -4,11 +4,7 @@ const passwordInputDOM = document.querySelector(".password-input");
 const formAlertDOM = document.querySelector(".form-alert");
 const btnDOM = document.querySelector("#data");
 
-console.log("******************************");
-
 document.querySelector(".btn-block").addEventListener("click", async (e) => {
-  console.log("******************************");
-
   formAlertDOM.classList.remove("text-success");
 
   e.preventDefault();
@@ -16,26 +12,19 @@ document.querySelector(".btn-block").addEventListener("click", async (e) => {
   const password = passwordInputDOM.value;
 
   try {
-    const { data } = await axios.post(
-      "http://localhost:3000/api/auth/login",
-      {
-        email: email,
-        password: password,
-      },
-
-    
-    );
+    const { data } = await axios.post("http://localhost:3000/api/auth/signup", {
+      email: email,
+      password: password,
+    });
 
     formAlertDOM.style.display = "block";
     formAlertDOM.textContent = data.msg;
-
     formAlertDOM.classList.add("text-success");
     usernameInputDOM.value = "";
     passwordInputDOM.value = "";
 
     localStorage.setItem("token", data.token);
-    window.location.href = "http://localhost:3000/index.html";
-    
+
   } catch (error) {
     console.log(error);
   }

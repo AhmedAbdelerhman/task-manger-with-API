@@ -4,6 +4,8 @@ const isAuthriuzed = require('../midleware/authrization')
 const router = express()
 
 router.get("/tasks",isAuthriuzed,Task.getTasks)
+router.get("/index.html",isAuthriuzed)
+
 router.get("/task/:idTask",isAuthriuzed,Task.getTask)
 
 router.post("/task",isAuthriuzed,Task.createTask)

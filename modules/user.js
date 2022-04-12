@@ -12,7 +12,13 @@ const userSchema = mongoose.Schema({
         type:String,
         trim:true,
         require:true
-    }
+    },
+
+    resetToken:{
+        type:String,
+        default:""
+    },
+    resetTokenExpiration:Date
 })
 
 module.exports = mongoose.model("user", userSchema)

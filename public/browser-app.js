@@ -6,6 +6,10 @@ const formAlertDOM = document.querySelector(".form-alert");
 // Load tasks from /api/tasks
 const showTasks = async () => {
   const token = localStorage.getItem('token')
+  if(!token)
+  window.location.href = "http://localhost:3000/";
+
+
   loadingDOM.style.visibility = "visible";
   try {
     const { data: { tasks }} = await axios.get("/api/tasks",   {

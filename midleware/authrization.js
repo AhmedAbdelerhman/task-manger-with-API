@@ -10,10 +10,12 @@ module.exports = (req, res, next) => {
       decodedToken = jwt.verify(token, "key");
   
     } catch (error) {
-      return res.status(401).json({ error: "un able to verify" });
+
+      return res.status(401).json({ error: "un able to verify" })
     }
     if(!decodedToken)
     {
+
       return res.status(401).json({ error: "authrizathion erro" });
     }
   

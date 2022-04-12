@@ -117,8 +117,10 @@ small,
   font-size: var(--smallText);
 }
 
-a {
+.a {
+  margin-top: 5%;
   text-decoration: none;
+  text-align: center;
 }
 ul {
   list-style-type: none;
