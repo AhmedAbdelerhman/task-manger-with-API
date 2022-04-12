@@ -3,7 +3,6 @@ const Task = require("../modules/tasks");
 exports.getTasks = (req, res, next) => {
   Task.find()
     .then((tasks) => {
-      //    console.log(tasks, "//////////////////");
       res.status(200).json({ tasks: tasks });
     })
     .catch((err) => {

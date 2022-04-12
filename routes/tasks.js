@@ -1,15 +1,15 @@
 const Task = require('../controllers/tasks')
 const express = require('express')
-
+const isAuthriuzed = require('../midleware/authrization')
 const router = express()
 
-router.get("/tasks",Task.getTasks)
-router.get("/task/:idTask",Task.getTask)
+router.get("/tasks",isAuthriuzed,Task.getTasks)
+router.get("/task/:idTask",isAuthriuzed,Task.getTask)
 
-router.post("/task",Task.createTask)
-router.patch("/task/:idTask",Task.updatTask)
+router.post("/task",isAuthriuzed,Task.createTask)
+router.patch("/task/:idTask",isAuthriuzed,Task.updatTask)
 
-router.delete("/task/:idTask",Task.deleteTask)
+router.delete("/task/:idTask",isAuthriuzed,Task.deleteTask)
 
 
 

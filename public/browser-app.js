@@ -5,9 +5,14 @@ const taskInputDOM = document.querySelector(".task-input");
 const formAlertDOM = document.querySelector(".form-alert");
 // Load tasks from /api/tasks
 const showTasks = async () => {
+  const token = localStorage.getItem('token')
   loadingDOM.style.visibility = "visible";
   try {
-    const { data: { tasks }} = await axios.get("/api/tasks");
+    const { data: { tasks }} = await axios.get("/api/tasks",   {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     if (tasks.length < 1) {
       tasksDOM.innerHTML = '<h5 class="empty-list">No tasks in your list</h5>';
       loadingDOM.style.visibility = "hidden";
@@ -34,7 +39,6 @@ const showTasks = async () => {
 </div>`;
       })
       .join("");
-      console.log(allTasks);
     tasksDOM.innerHTML = allTasks;
   } catch (error) {
     tasksDOM.innerHTML =
